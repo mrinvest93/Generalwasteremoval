@@ -1,0 +1,88 @@
+from pathlib import Path
+import zipfile, shutil, textwrap
+
+base = Path("/mnt/data/general-waste-removal-site")
+base.mkdir(exist_ok=True)
+
+# Copy uploaded logo into site folder with web-safe name
+src_logo = Path("/mnt/data/waste removal no text.png")
+logo_name = "general-waste-removal-logo.png"
+if src_logo.exists():
+    shutil.copy(src_logo, base / logo_name)
+
+html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General Waste Removal | Hamilton & Haldimand County</title>
+  <meta name="description" content="Junk removal, garbage removal, cleanouts, furniture removal, appliance removal, yard waste, construction debris, estate cleanouts, shed removal in Hamilton and Haldimand County." />
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; color: #123; background: #f7fafc; }
+    header { background: white; text-align: center; padding: 35px 20px 25px; }
+    .logo { max-width: 760px; width: 95%; height: auto; }
+    nav { background: #064f9e; padding: 14px; text-align: center; }
+    nav a { color: white; text-decoration: none; font-weight: bold; margin: 0 14px; }
+    .hero { background: linear-gradient(135deg, #064f9e, #45a800); color: white; text-align: center; padding: 70px 20px; }
+    .hero h1 { font-size: 44px; margin: 0 0 15px; }
+    .hero p { font-size: 21px; max-width: 850px; margin: auto; line-height: 1.5; }
+    .btn { display: inline-block; margin-top: 25px; background: white; color: #064f9e; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+    section { max-width: 1050px; margin: auto; padding: 55px 22px; }
+    h2 { color: #064f9e; font-size: 32px; margin-top: 0; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+    .card { background: white; padding: 22px; border-radius: 12px; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+    .card h3 { margin-top: 0; color: #45a800; }
+    .contact-box { background: white; border-radius: 14px; padding: 28px; box-shadow: 0 3px 12px rgba(0,0,0,.1); }
+    input, textarea { width: 100%; padding: 13px; margin: 9px 0 16px; border: 1px solid #ccc; border-radius: 7px; font-size: 16px; }
+    textarea { min-height: 130px; }
+    button { background: #45a800; color: white; border: 0; padding: 14px 24px; border-radius: 8px; font-size: 17px; font-weight: bold; cursor: pointer; }
+    footer { background: #063d78; color: white; text-align: center; padding: 25px; }
+    .phone { font-size: 22px; font-weight: bold; color: #45a800; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="general-waste-removal-logo.png" alt="General Waste Removal Logo" class="logo" />
+</header>
+
+<nav>
+  <a href="#services">Services</a>
+  <a href="#areas">Areas</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+  <h1>Junk & Garbage Removal Made Easy</h1>
+  <p>Fast, friendly waste removal services for Hamilton and Haldimand County. We handle cleanouts, haul away jobs, furniture, appliances, yard waste, construction debris, estate cleanouts, shed removal, and more.</p>
+  <a class="btn" href="tel:12896987778">Call (289) 698-7778</a>
+</div>
+
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="grid">
+    <div class="card"><h3>Junk Removal</h3><p>General junk, clutter, unwanted items, and household waste.</p></div>
+    <div class="card"><h3>Furniture & Appliances</h3><p>Couches, mattresses, tables, fridges, stoves, washers, dryers, and more.</p></div>
+    <div class="card"><h3>Cleanouts</h3><p>Garage, basement, rental, estate, moving, and property cleanouts.</p></div>
+    <div class="card"><h3>Outdoor Waste</h3><p>Yard waste, shed removal, construction debris, and haul away jobs.</p></div>
+  </div>
+</section>
+
+<section id="areas">
+  <h2>Service Area</h2>
+  <div class="card">
+    <p><strong>Serving Hamilton and Haldimand County</strong></p>
+    <p>Junk removal • garbage removal • trash removal • waste removal • cleanout • haul away • furniture removal • appliance removal • yard waste • construction debris • estate cleanout • shed removal</p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <div class="contact-box">
+    <p class="phone">Phone: <a href="tel:12896987778">(289) 698-7778</a></p>
+    <p>Send us a message for pricing, availability, or to book a pickup.</p>
+
+    <!-- Replace YOUR_EMAIL_HERE with the email address you want messages sent to -->
+    <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+      <input type="hidden" name="_subject" value="New
