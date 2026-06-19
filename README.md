@@ -1,2 +1,0 @@
-# Generalwasteremoval
-Website 
